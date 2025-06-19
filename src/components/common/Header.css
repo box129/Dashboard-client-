@@ -1,0 +1,58 @@
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification-btn {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.notification-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.chevron {
+  color: #9ca3af;
+}

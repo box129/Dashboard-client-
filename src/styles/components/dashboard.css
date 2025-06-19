@@ -1,0 +1,105 @@
+/* Dashboard.css */
+.dashboard {
+  padding: 0;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Stats Section */
+.stats-section {
+  margin-bottom: 32px;
+}
+
+/* Charts Section */
+.charts-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.activity-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-bottom: 32px;
+}
+
+/* Table Section */
+.table-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.view-all-btn:hover {
+  background-color: #eff6ff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 16px;
+  }
+  
+  .charts-section {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .stats-section,
+  .progress-section {
+    margin-bottom: 24px;
+  }
+}
