@@ -15,13 +15,7 @@ const Sidebar = () => {
       {/* Where the leadway logo is */}
       <div className="sidebar-header">
         <div className="logo-container">
-          <div className="logo-icon">
-            <span>L</span>
-          </div>
-          <div className="logo-text">
-            <h1>LEADWAY</h1>
-            <p>CAPITAL & TRUSTS LIMITED</p>
-          </div>
+          <img src="./Frame.svg" alt="lead logo" />
         </div>
       </div>
       {/*Where the actually navigaation is done*/}

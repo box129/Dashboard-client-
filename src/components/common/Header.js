@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="header">
       {/* {I might have to remove the h2 tag} */}
-      <h2 className="header-title">Your Dashboard Today</h2>
+      <h2></h2>
       <div className="header-actions">
         <button className="notification-btn">
           <Bell size={20} />
@@ -23,6 +23,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    
   );
 };
 

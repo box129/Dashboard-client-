@@ -3,11 +3,14 @@ import DashboardStats from '../components/dashboard/DashboardStats';
 import ActivitySummary from '../components/dashboard/ActivitySummary';
 import CustomerProgress from '../components/dashboard/CustomerProgress';
 import TransactionChart from '../components/dashboard/TransactionChart';
-import DataTable from '../components/common/DataTable';
+import CustomerList from '../components/dashboard/CustomerList';
+import DashboardService from '../services/DashboardService';
 import '../styles/components/dashboard.css';
 
 const Dashboard = () => {
-  const [recentTransactions, setRecentTransactions] = useState([]);
+  const [recentCustomers, setRecentCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [dashboardStats, setDashboardStats] = useState({
     totalCustomers: 0,
     totalTransactions: 0,
@@ -25,100 +28,54 @@ const Dashboard = () => {
       activeCustomers: 890
     });
 
-    // Simulate API call for recent transactions
-    setRecentTransactions([
-      {
-        id: 'TXN001',
-        customer: 'John Doe',
-        amount: 15000,
-        type: 'Credit',
-        date: '2024-06-18',
-        status: 'Completed'
-      },
-      {
-        id: 'TXN002',
-        customer: 'Jane Smith',
-        amount: 8500,
-        type: 'Debit',
-        date: '2024-06-18',
-        status: 'Pending'
-      },
-      {
-        id: 'TXN003',
-        customer: 'Mike Johnson',
-        amount: 25000,
-        type: 'Credit',
-        date: '2024-06-17',
-        status: 'Completed'
-      },
-      {
-        id: 'TXN004',
-        customer: 'Sarah Wilson',
-        amount: 12000,
-        type: 'Credit',
-        date: '2024-06-17',
-        status: 'Failed'
-      },
-      {
-        id: 'TXN005',
-        customer: 'David Brown',
-        amount: 5500,
-        type: 'Debit',
-        date: '2024-06-16',
-        status: 'Completed'
+    // Simulate API call for recent customers
+    const fetchCustomers = async () => {
+      try {
+        const {data} = await DashboardService.getAllCustomers();
+        setRecentCustomers(data);
+        console.log("DATA RECEIVED:", data);
+      } catch (err) {
+        setError('Failed to load customers');
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    ]);
+    };
+
+    fetchCustomers();
   }, []);
 
-  // Define columns for the recent transactions table
-  const transactionColumns = [
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
+
+  // Define columns for the recent customers table
+  const customerColumns = [
     {
-      key: 'id',
-      header: 'Transaction ID',
+      key: 'name',
+      header: 'Name',
       render: (row) => (
-        <span className="font-medium text-blue-600">{row.id}</span>
+        <span className="customer-name">{row.name}</span>
       )
     },
     {
-      key: 'customer',
-      header: 'Customer',
+      key: 'email',
+      header: 'Email',
       render: (row) => (
-        <span className="font-medium">{row.customer}</span>
+        <span className="customer-email">{row.email}</span>
       )
     },
     {
-      key: 'amount',
-      header: 'Amount',
+      key: 'phoneNumber',
+      header: 'Phone Number',
       render: (row) => (
-        <span className={`font-semibold ${
-          row.type === 'Credit' ? 'text-green-600' : 'text-red-600'
-        }`}>
-          {row.type === 'Credit' ? '+' : '-'}₦{row.amount.toLocaleString()}
-        </span>
+        <span className="customer-phone">{row.phoneNumber}</span>
       )
     },
     {
-      key: 'date',
-      header: 'Date',
+      key: 'rsaPin',
+      header: 'RSA Pin',
       render: (row) => (
-        <span className="text-gray-600">
-          {new Date(row.date).toLocaleDateString()}
-        </span>
-      )
-    },
-    {
-      key: 'status',
-      header: 'Status',
-      render: (row) => (
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-          row.status === 'Completed' 
-            ? 'bg-green-100 text-green-800'
-            : row.status === 'Pending'
-            ? 'bg-yellow-100 text-yellow-800'
-            : 'bg-red-100 text-red-800'
-        }`}>
-          {row.status}
-        </span>
+        <span className="customer-rsa">{row.rsaPin}</span>
       )
     }
   ];
@@ -129,49 +86,45 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-content">
-        {/* Stats Section */}
-        <div className="stats-section">
-          <DashboardStats stats={dashboardStats} />
+    <div className="dashboard-container">
+      <h2 className="header-title">Your Dashboard Today</h2>
+
+      {/* Stats Section */}
+      <div className="stats-section">
+        <DashboardStats stats={dashboardStats} />
+      </div>
+
+      <div className="charts-section">
+        {/* Recent Customers Table */}
+        <div className="table-section">
+          <div className="section-header">
+            <h3>Customer List</h3>
+          </div>
+          <CustomerList
+            columns={customerColumns}
+            data={recentCustomers}
+            onRowAction={handleRowAction}
+          />
         </div>
 
-        <div className="charts-section">
-          {/* Recent Transactions Table */}
-          <div className="table-section">
-            <div className="section-header">
-              <h3>Recent Transactions</h3>
-              <button className="view-all-btn">View All</button>
-            </div>
-            <DataTable
-              columns={transactionColumns}
-              data={recentTransactions}
-              onRowAction={handleRowAction}
-            />
-          </div>
-
-          {/* Customer Progress Section */}
-          <div className="progress-section">
+        {/* Customer Progress Section */}
+        <div className="progress-section">
+          <div>
             <CustomerProgress />
           </div>
+          
+        </div>
+      </div>
 
+      {/* Charts and Activity Section */}
+      <div className="charts-section">
+        <div className="activity-container">
+          <ActivitySummary />
         </div>
 
-        {/* Charts and Activity Section */}
-        <div className="charts-section">
-          <div className="activity-container">
-            <ActivitySummary />
-          </div>
-
-          <div className="chart-container">
-            <TransactionChart />
-          </div>
-
+        <div className="chart-container">
+          <TransactionChart />
         </div>
-
-
-
-
       </div>
     </div>
   );

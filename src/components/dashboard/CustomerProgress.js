@@ -23,8 +23,8 @@ const CustomerProgress = ({ data }) => {
                 data={progressData}
                 cx="50%"
                 cy="50%"
-                innerRadius={40}
-                outerRadius={60}
+                innerRadius={80}
+                outerRadius={100}
                 dataKey="value"
               >
                 {progressData.map((entry, index) => (
@@ -38,7 +38,9 @@ const CustomerProgress = ({ data }) => {
           </div>
         </div>
 
-        <div className="legend">
+        
+      </div>
+      <div className="legend">
           {progressData.map((item, index) => (
             <div key={index} className="legend-item">
               <div
@@ -47,12 +49,13 @@ const CustomerProgress = ({ data }) => {
               />
               <div className="legend-text">
                 <p className="legend-label">{item.name}</p>
-                <p className="legend-value">{item.value}</p>
+                <p className="legend-value">{item.value}{`(${index === 0 ? percentage : 100 - percentage}%)`}
+                  <span></span>
+                </p>
               </div>
             </div>
           ))}
         </div>
-      </div>
     </div>
   );
 };
