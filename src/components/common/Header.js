@@ -14,7 +14,7 @@ const Header = () => {
 
         <div className="user-profile">
           <img 
-            src="" 
+            src="https://picsum.photos/200/300" 
             alt="User" 
             className="user-avatar" 
           />

@@ -31,6 +31,7 @@ const Dashboard = () => {
     // Simulate API call for recent customers
     const fetchCustomers = async () => {
       try {
+        setLoading(true);
         const {data} = await DashboardService.getAllCustomers();
         setRecentCustomers(data);
         console.log("DATA RECEIVED:", data);
@@ -118,11 +119,11 @@ const Dashboard = () => {
 
       {/* Charts and Activity Section */}
       <div className="charts-section">
-        <div className="activity-container">
+        <div>
           <ActivitySummary />
         </div>
 
-        <div className="chart-container">
+        <div>
           <TransactionChart />
         </div>
       </div>

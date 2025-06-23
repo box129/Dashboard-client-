@@ -1,0 +1,116 @@
+/* CustomerList.css */
+.customer-list-container-none {
+  background: white;
+  /* border-radius: 12px; */
+  /* padding: 24px; */
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+  /* margin-bottom: 24px; */
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.table-header {
+  text-align: left;
+  padding: 16px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 1px solid #f3f4f6;
+  background: #fafafa;
+}
+
+.table-row {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background-color: #f9fafb;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  padding: 16px 12px;
+  font-size: 14px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.avatar-cell {
+  padding: 16px 12px;
+  width: 60px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f97316;
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.action-cell {
+  width: 80px;
+  text-align: center;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-button:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.action-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .customer-list-container {
+    padding: 16px;
+    margin: 0 -16px 24px -16px;
+    border-radius: 0;
+  }
+  
+  .table-header,
+  .table-cell {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+  
+  .avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
