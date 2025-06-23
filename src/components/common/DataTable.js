@@ -1,7 +1,8 @@
 import React from 'react';
 import { Ellipsis } from 'lucide-react';
 
-const DataTable = ({ columns, data, onRowAction }) => {
+const DataTable =
+ ({ columns, data, onRowAction }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden">
       <div className="overflow-x-auto">

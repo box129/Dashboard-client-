@@ -7,7 +7,7 @@ const Sidebar = () => {
   const navItems = [
     { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/customers', icon: Users, label: 'Customers' },
-    { path: '/transaction', icon: CreditCard, label: 'Transactions' },
+    { path: '/transactions', icon: CreditCard, label: 'Transactions' },
   ];
 
   return (
@@ -15,13 +15,7 @@ const Sidebar = () => {
       {/* Where the leadway logo is */}
       <div className="sidebar-header">
         <div className="logo-container">
-          <div className="logo-icon">
-            <span>L</span>
-          </div>
-          <div className="logo-text">
-            <h1>LEADWAY</h1>
-            <p>CAPITAL & TRUSTS LIMITED</p>
-          </div>
+          <img src="./Frame.svg" alt="lead logo" />
         </div>
       </div>
       {/*Where the actually navigaation is done*/}
@@ -30,8 +24,10 @@ const Sidebar = () => {
           <NavLink 
             key={item.path}
             to={item.path}
-            className="nav-item"
-            activeClassName="nav-item-active"
+            className={({ isActive }) => 
+              `nav-item ${isActive ? 'nav-item-active' : ''}`
+            }
+            end={item.path === '/'}
           >
             <item.icon size={20} />
             <span>{item.label}</span>

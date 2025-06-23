@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
-const dashboardService = {
+const DashboardService = {
   // get the little dashboard customers
   getAllCustomers: async () => {
     const response = await axios.get(`${API_BASE_URL}/dashboard/stats`);
@@ -10,4 +10,4 @@ const dashboardService = {
   },
 };
 
-export default dashboardService;
+export default DashboardService;

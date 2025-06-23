@@ -3,7 +3,7 @@ import { Ellipsis } from 'lucide-react';
 import './CustomerList.css';
 
 const CustomerList = ({ columns, data, onRowAction }) => {
-  //Avatar placement component
+  // Avatar placeholder component
   const Avatar = ({ name }) => {
     const initials = name ? name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U';
     return (
@@ -14,12 +14,12 @@ const CustomerList = ({ columns, data, onRowAction }) => {
   };
 
   return (
-    <div className="customer-list-container-none">
+    <div>
       <div className="table-wrapper">
         <table className="customer-table">
           <thead>
             <tr>
-              <th></th> {/* Empty Column for avatar */}
+              <th></th> {/* Empty column for avatar */}
               {columns.map((column, index) => (
                 <th key={index} className="table-header">
                   {column.header}
@@ -41,8 +41,8 @@ const CustomerList = ({ columns, data, onRowAction }) => {
                 ))}
                 <td className="table-cell action-cell">
                   <button
-                    onClick={() => onRowAction && onRowAction(row)}
                     className="action-button"
+                    onClick={() => onRowAction && onRowAction(row)}
                   >
                     <Ellipsis size={16} />
                   </button>

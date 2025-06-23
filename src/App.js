@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/common/Layout';
 import Dashboard from './pages/Dashboard';
-import Customers from './pages/Transactions';
+import Customers from './pages/Customers';
 import Transactions from './pages/Transactions';
 import './App.css';
 

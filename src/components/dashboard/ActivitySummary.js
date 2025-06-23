@@ -1,4 +1,5 @@
 import React from 'react';
+import './ActivitySummary.css'; // Import the CSS file
 
 const ActivitySummary = ({ activities }) => {
   const defaultActivities = [
@@ -11,19 +12,17 @@ const ActivitySummary = ({ activities }) => {
   const activityList = activities || defaultActivities;
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">Activity Summary Today</h3>
+    <div className="activity-summary">
+      <h3>Activity Summary Today</h3>
 
-      <div classname="space-y-4">
+      <div className="activity-list">
         {activityList.map((activity, index) => (
-          <div key={index} className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-orange rounded-full"></div>
-              <div className="flex-1">
-                <p className="text-sm text-gray-900">
-                  <span className="font-medium">{activity.user}</span> {activity.action}
-                </p>
-              </div>
-              <span className="text-xs text-gray-500">{activity.time}</span>
+          <div key={index} className="activity-item">
+            <div className="activity-dot"></div>
+            <div className="activity-content">
+              <span className="activity-user">{activity.user}</span> {activity.action}
+            </div>
+            <span className="activity-time">{activity.time}</span>
           </div>
         ))}
       </div>

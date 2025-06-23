@@ -1,0 +1,92 @@
+/* Transaction Chart Styles */
+.transaction-chart-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.year-selector {
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #4a5568;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+/* .year-selector:focus {
+  border-color: #48bb78;
+  box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+} */
+
+/* .year-selector:hover {
+  border-color: #cbd5e0;
+} */
+
+.chart-wrapper {
+  flex: 1;
+  height: 240px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .transaction-chart-container {
+    padding: 16px;
+    height: 280px;
+  }
+  
+  .chart-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .chart-title {
+    font-size: 14px;
+  }
+  
+  .year-selector {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  
+  .chart-wrapper {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .transaction-chart-container {
+    padding: 12px;
+    height: 260px;
+  }
+  
+  .chart-wrapper {
+    height: 180px;
+  }
+}
